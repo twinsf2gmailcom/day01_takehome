@@ -1,17 +1,18 @@
 //const input = document.querySelector('input');
 // const log = document.getElementById('values');
 //input.addEventListener('input', getMoviesBySearchTerm)
+const apikey = '7b39eea';
+const baseurl= 'http://www.omdbapi.com'
 
-
-const getMoviesBySearchTerm = async (x) => {
+export const getMoviesBySearchTerm = async (x) => {
     try {
         const input = document.getElementById('inputSrch');
-        // console.log(input.value)
+        console.log(input.value)
         // searchTerm = e.target.value
-        searchTerm = input.value;
+        let searchTerm = input.value;
         //console.log(searchTerm);
-        
-        let response = await fetch(`http://www.omdbapi.com/?apikey=${apikey}&s=${searchTerm}`);
+
+        let response = await fetch(`${baseurl}/?apikey=${apikey}&s=${searchTerm}`);
         let omdires = await response.json();
         //console.log(omdires.Search.length);
         
@@ -32,15 +33,14 @@ const getMoviesBySearchTerm = async (x) => {
       }
 }
 
-const getMovieDetailsById = async (x) => {
+export const getMovieDetailsById = async (x) => {
     try {
         const input = document.getElementById('inputId');
         //console.log(input.value)
         // searchTerm = e.target.value
-        searchTerm = input.value;
+        let searchTerm = input.value;
         //console.log(searchTerm);
-        
-        let response = await fetch(`http://www.omdbapi.com/?apikey=${apikey}&i=${searchTerm}`);
+        let response = await fetch(`${baseurl}/?apikey=${apikey}&i=${searchTerm}`);
         let omdires = await response.json();
         //console.log(omdires);
         
@@ -74,8 +74,6 @@ const getMovieDetailsById = async (x) => {
       }
 }
 
-document.getElementById("btn").addEventListener("click", getMoviesBySearchTerm);
-document.getElementById("btnid").addEventListener("click", getMovieDetailsById);
 
 
 // input.addEventListener('input', updateValue);
